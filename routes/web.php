@@ -15,4 +15,15 @@ Route::get('/home', function () {
     return view('login');
 });
 
-Route::post('/login','DetectDevice@getDeviceType');
+// Route::post('/login','DetectDevice@getDeviceType');
+
+
+// =================  Redirect ==============
+Route::get('/advt','DetectDevice@advt');
+Route::get('/from/{id}','DetectDevice@from');
+// =================  /Redirect ==============
+
+Route::get('/login', 'UserLoginController@redirectToProvider');
+
+//Route::get('/home', 'UserLoginController@handleProviderCallback');
+

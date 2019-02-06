@@ -25,5 +25,16 @@ class DetectDevice extends Controller
             $phone="true";        }
             return [$platform,$browser,$phone];
     }
-   
+// =================  Redirect ==============
+    public function advt(){
+        return view('advt');
+    }
+   public function from($id){
+       if($id==1){
+           return "facebook";
+       }
+       if($id==2){
+           return "insta";
+       }
+   }
 }
