@@ -26,7 +26,7 @@ Route::get('/from/{id}','DetectDevice@from');
 
 Route::get('/login', 'UserLoginController@redirectToProvider');
 
-//Route::get('/home2', 'UserLoginController@handleProviderCallback');
+Route::get('/home2', 'UserLoginController@handleProviderCallback');
 
 Route::get('/', function () {
     return view('login');});
