@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\product;
+use App\cart;
+use DB;
 
 class login extends Controller
 {
@@ -37,9 +40,24 @@ class login extends Controller
  // $city = $json['city'];
  // return $city;
 
-    	return view('home');
+ $cart=DB::select("select count(*) as 'number' from cart where user_id=1 and status=1");
+ $products=DB::select("select * from product");
+ $searches=DB::select("select * from search where user_id=1 order by search_id DESC");
+
+
+
+    	return view('home',['cart'=>$cart[0]->number,'products'=>$products,'searches'=>$searches]);
     }
 
-  
+    public function search(Request $Request){
+    	$query= $Request['query'];
+    	DB::table('search')->insert(
+                            ['search_str' => $query, 'user_id' => 1,]
+                        );
+    	$cart=DB::select("select count(*) as 'number' from cart where user_id=1 and status=1");
+    	$products=DB::select("select * from product where title='$query'");
+ 		$searches=[];
+    	return view('home',['cart'=>$cart[0]->number,'products'=>$products,'searches'=>$searches]);
+    }
 }
 	

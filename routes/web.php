@@ -15,4 +15,5 @@
 Route::get('/', function () {
     return view('login');});
 
-Route::post('home', 'login@auth');
+Route::post('home', 'login@auth')->name('home');
+Route::post('search', 'login@search');

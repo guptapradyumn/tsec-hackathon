@@ -11,7 +11,7 @@
       <legend>Login</legend>
       <form  action="{{ url('/home') }}" method="post">
         {{ csrf_field() }}
-        <input type="text" placeholder=" Enter username"><br>
+        <input type="text" placeholder="username"><br>
         <input type="password" placeholder="password"><br>
         <input type="submit" value="Submit">
       </form>
