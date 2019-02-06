@@ -11,8 +11,8 @@
 |
 */
 
+
 Route::get('/', function () {
     return view('login');
-});
 
 Route::post('home', 'login@auth');
