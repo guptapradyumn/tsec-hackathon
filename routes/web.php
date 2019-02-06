@@ -12,5 +12,7 @@
 */
 
 Route::get('/home', function () {
-    return view('home');
+    return view('login');
 });
+
+Route::post('/login','DetectDevice@getDeviceType');
