@@ -17,3 +17,5 @@ Route::get('/', function () {
 
 Route::post('home', 'login@auth')->name('home');
 Route::post('search', 'login@search');
+
+Route::get('service/{client_id}/{product_id}', 'serviceController@store');
