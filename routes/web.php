@@ -12,5 +12,7 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('login');
 });
+
+Route::post('home', 'login@auth');
