@@ -11,6 +11,7 @@
 |
 */
 
+
 Route::get('/home', function () {
     return view('login');
 });
@@ -25,5 +26,13 @@ Route::get('/from/{id}','DetectDevice@from');
 
 Route::get('/login', 'UserLoginController@redirectToProvider');
 
-//Route::get('/home', 'UserLoginController@handleProviderCallback');
+//Route::get('/home2', 'UserLoginController@handleProviderCallback');
+
+Route::get('/', function () {
+    return view('login');});
+
+Route::post('home', 'login@auth')->name('home');
+Route::post('search', 'login@search');
+
+Route::get('service/{client_id}/{product_id}', 'serviceController@store');
 

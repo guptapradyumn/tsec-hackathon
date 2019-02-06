@@ -8,7 +8,8 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>Shop Homepage - Start Bootstrap Template</title>
+  <title>ecommerce</title>
+  
 
   <!-- Bootstrap core CSS -->
   <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -23,26 +24,25 @@
   <!-- Navigation -->
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
     <div class="container">
-      <a class="navbar-brand" href="#">Start Bootstrap</a>
+      <a class="navbar-brand" href="{{ url('/') }}">Code Buddies</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto">
           <li class="nav-item active">
-            <a class="nav-link" href="#">Home
-              <span class="sr-only">(current)</span>
-            </a>
+            <form action="{{ url('/search')}}" method="POST">
+              {{ csrf_field() }}
+            <input type="text" placeholder="type..." name="query" required> &nbsp
+           <input type="submit" value="Search">
+           </form>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">About</a>
+           <li class="nav-item">
+            <a class="nav-link" href="#">Cart {{ $cart }}</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Services</a>
-          </li>
-          <li class="nav-item">
+          <!--<li class="nav-item">
             <a class="nav-link" href="#">Contact</a>
-          </li>
+          </li> -->
         </ul>
       </div>
     </div>
@@ -55,7 +55,7 @@
 
       <div class="col-lg-3">
 
-        <h1 class="my-4">Shop Name</h1>
+        <h1 class="my-4">Dashboard</h1>
         <div class="list-group">
           <a href="#" class="list-group-item">Category 1</a>
           <a href="#" class="list-group-item">Category 2</a>
@@ -95,24 +95,55 @@
         </div>
 
         <div class="row">
-
+          @foreach($searches as $key=>$data1)
+            @foreach($products as $key=>$data)
+              @if($data1->search_str==$data->title)
           <div class="col-lg-4 col-md-6 mb-4">
             <div class="card h-100">
               <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
+              
               <div class="card-body">
                 <h4 class="card-title">
-                  <a href="#">Item One</a>
+                  <a href="#">{{ $data->title }}</a>
                 </h4>
-                <h5>$24.99</h5>
-                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur!</p>
+                <h5>${{ $data->price }}</h5>
+                <p class="card-text">{{ $data->description }}</p>
               </div>
+             
               <div class="card-footer">
                 <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
               </div>
             </div>
           </div>
+          @endif
+          @endforeach
+           @endforeach
 
+          
+            @foreach($products as $key=>$data)
+              
           <div class="col-lg-4 col-md-6 mb-4">
+            <div class="card h-100">
+              <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
+              
+              <div class="card-body">
+                <h4 class="card-title">
+                  <a href="#">{{ $data->title }}</a>
+                </h4>
+                <h5>${{ $data->price }}</h5>
+                <p class="card-text">{{ $data->description }}</p>
+              </div>
+             
+              <div class="card-footer">
+                <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
+              </div>
+            </div>
+          </div>
+          
+           @endforeach
+
+          
+          <!-- <div class="col-lg-4 col-md-6 mb-4">
             <div class="card h-100">
               <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
               <div class="card-body">
@@ -191,7 +222,7 @@
               </div>
             </div>
           </div>
-
+ -->
         </div>
         <!-- /.row -->
 
