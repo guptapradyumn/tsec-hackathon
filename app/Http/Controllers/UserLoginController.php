@@ -19,6 +19,14 @@ class UserLoginController extends Controller
   *
   * @return \Illuminate\Http\Response
   */
+
+
+//   get secret keys
+//   save keys and callbackURL in .env file
+// composer require google/apiclient:^2.0
+
+// refer: https://laravel-news.com/google-api-socialite
+
 public function redirectToProvider()
 {
     return Socialite::driver('google')->redirect();
